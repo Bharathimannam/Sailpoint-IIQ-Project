@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE CorrelationConfig PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<CorrelationConfig created="" id="" modified="" name="Mobile_Correlation">
+  <AttributeAssignments>
+    <Filter operation="EQ" property="email" value="PrimarySMTP"/>
+    <Filter operation="EQ" property="displayName" value="DisplayName"/>
+    <Filter operation="EQ" property="name" value="DisplayName"/>
+  </AttributeAssignments>
+</CorrelationConfig>

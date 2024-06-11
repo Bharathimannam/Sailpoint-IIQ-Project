@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE CorrelationConfig PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<CorrelationConfig created="" id="" modified="" name="OracleBPMCorrelation">
+  <AttributeAssignments>
+    <Filter operation="EQ" property="hcmUserName" value="User Name"/>
+    <Filter operation="EQ" property="email" value="User Name"/>
+    <Filter ignoreCase="true" operation="EQ" property="displayName" value="Display Name"/>
+  </AttributeAssignments>
+</CorrelationConfig>

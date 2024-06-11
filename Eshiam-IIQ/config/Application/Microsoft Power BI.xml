@@ -1,0 +1,266 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" created="" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS, SEARCH, ENABLE, UNLOCK" icon="databaseIcon" id="" modified="" name="Microsoft Power BI" profileClass="para_spadmin" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" id="" name="PowerBI_Correlation"/>
+  </AccountCorrelationConfig>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="SELECT EMP_ID, EMAIL_ADDRESS, USER_NAME, ACCESS_TYPE, MASTER_DELETE_FLAG, COMPANY_NO, REST_NUMBER, CHAIN_NUMBER, AREA_NUMBER, DELETE_FLAG, ENTRY_FLAG, PETTY_CASH_ENTRY, SALES_FLAG, PL_FLAG, Marketing_Flag, PAYROLL_FLAG, ARCHIVING_FLAG, USER_TITLE, USER_ID, COST_CENTER, USER_STATUS, &#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales&apos;)&#xD;&#xA;END AS SALES_GROUP,&#xD;&#xA;CASE&#xD;&#xA;    WHEN PL_FLAG = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : PL&apos;)&#xD;&#xA;END AS PL_GROUP,&#xD;&#xA;CASE&#xD;&#xA;    WHEN Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Marketing&apos;)&#xD;&#xA;END AS MARKETING_GROUP,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; and PL_FLAG = &apos;F&apos; and Marketing_Flag = &apos;F&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales&apos;)&#xD;&#xA;END AS STORE_INFO_S,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;F&apos; and PL_FLAG = &apos;T&apos; and Marketing_Flag = &apos;F&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : P/L&apos;)&#xD;&#xA;END AS STORE_INFO_L,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;F&apos; and PL_FLAG = &apos;F&apos; and Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Marketing&apos;)&#xD;&#xA;END AS STORE_INFO_M,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;F&apos; and PL_FLAG = &apos;T&apos; and Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : P/L,Marketing&apos;)&#xD;&#xA;END AS STORE_INFO_LM,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; and PL_FLAG = &apos;F&apos; and Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales,Marketing&apos;)&#xD;&#xA;END AS STORE_INFO_SM,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; and PL_FLAG = &apos;T&apos; and Marketing_Flag = &apos;F&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales,P/L&apos;)&#xD;&#xA;END AS STORE_INFO_SL,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; and PL_FLAG = &apos;T&apos; and Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales,P/L,Marketing&apos;)&#xD;&#xA;END AS STORE_INFO_SLM&#xD;&#xA;FROM USERDB.User_Security s&#xD;&#xA;INNER JOIN USERDB.DimRestaurant r ON s.COMPANY_NO = r.COMPANY_ID and s.REST_NUMBER = r.[Restaurant Code]&#xD;&#xA;WHERE s.EMAIL_ADDRESS IS NOT NULL&#xD;&#xA;ORDER BY s.EMAIL_ADDRESS;"/>
+      <entry key="acctAggregationEnd">
+        <value>
+          <Date>1717036588866</Date>
+        </value>
+      </entry>
+      <entry key="acctAggregationStart">
+        <value>
+          <Date>1717032745106</Date>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="compositeDefinition"/>
+      <entry key="connMaxRetry" value="3"/>
+      <entry key="connRetryEnable">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="connWaitTimeForRetry" value="2"/>
+      <entry key="deltaTable"/>
+      <entry key="disableOrderingCheck" value="true"/>
+      <entry key="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="getObjectSQL" value="SELECT EMP_ID, EMAIL_ADDRESS, USER_NAME, ACCESS_TYPE, MASTER_DELETE_FLAG, COMPANY_NO, REST_NUMBER, CHAIN_NUMBER, AREA_NUMBER, DELETE_FLAG, ENTRY_FLAG, PETTY_CASH_ENTRY, SALES_FLAG, PL_FLAG, Marketing_Flag, PAYROLL_FLAG, ARCHIVING_FLAG, USER_TITLE, USER_ID, COST_CENTER, USER_STATUS, &#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales&apos;)&#xD;&#xA;END AS SALES_GROUP,&#xD;&#xA;CASE&#xD;&#xA;    WHEN PL_FLAG = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : PL&apos;)&#xD;&#xA;END AS PL_GROUP,&#xD;&#xA;CASE&#xD;&#xA;    WHEN Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Marketing&apos;)&#xD;&#xA;END AS MARKETING_GROUP,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; and PL_FLAG = &apos;F&apos; and Marketing_Flag = &apos;F&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales&apos;)&#xD;&#xA;END AS STORE_INFO_S,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;F&apos; and PL_FLAG = &apos;T&apos; and Marketing_Flag = &apos;F&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : P/L&apos;)&#xD;&#xA;END AS STORE_INFO_L,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;F&apos; and PL_FLAG = &apos;F&apos; and Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Marketing&apos;)&#xD;&#xA;END AS STORE_INFO_M,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;F&apos; and PL_FLAG = &apos;T&apos; and Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : P/L,Marketing&apos;)&#xD;&#xA;END AS STORE_INFO_LM,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; and PL_FLAG = &apos;F&apos; and Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales,Marketing&apos;)&#xD;&#xA;END AS STORE_INFO_SM,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; and PL_FLAG = &apos;T&apos; and Marketing_Flag = &apos;F&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales,P/L&apos;)&#xD;&#xA;END AS STORE_INFO_SL,&#xD;&#xA;CASE&#xD;&#xA;    WHEN SALES_FLAG = &apos;T&apos; and PL_FLAG = &apos;T&apos; and Marketing_Flag = &apos;T&apos; THEN concat(r.COUNTRY_DESC,&apos; : &apos;,r.CHAIN_NAME,&apos; : &apos;,r.[Restaurant Name],&apos; : Sales,P/L,Marketing&apos;)&#xD;&#xA;END AS STORE_INFO_SLM&#xD;&#xA;FROM USERDB.User_Security s&#xD;&#xA;INNER JOIN USERDB.DimRestaurant r ON s.COMPANY_NO = r.COMPANY_ID and s.REST_NUMBER = r.[Restaurant Code]&#xD;&#xA;and EMAIL_ADDRESS=&apos;$(identity)&apos;;"/>
+      <entry key="indexColumns">
+        <value>
+          <List>
+            <String>EMAIL_ADDRESS</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="Americana_Rule_PowerBI_Create_Provisioning_new_06052024"/>
+      <entry key="jdbcDisableProvisioningRule" value="Americana_Rule_PowerBI_Disable_Provisioning"/>
+      <entry key="jdbcEnableProvisioningRule" value="Americana_Rule_PowerBI_Enable_Provisioning"/>
+      <entry key="jdbcExceptionBucketing">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="jdbcModifyProvisioningRule" value="Americana_Rule_PowerBI_Modify_Provisioning_new_06052024"/>
+      <entry key="mergeColumns">
+        <value>
+          <List>
+            <String>MARKETING_GROUP</String>
+            <String>PL_GROUP</String>
+            <String>SALES_GROUP</String>
+            <String>STORE_INFO_L</String>
+            <String>STORE_INFO_LM</String>
+            <String>STORE_INFO_M</String>
+            <String>STORE_INFO_S</String>
+            <String>STORE_INFO_SL</String>
+            <String>STORE_INFO_SLM</String>
+            <String>STORE_INFO_SM</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="noPermissions" value="false"/>
+      <entry key="operations" value="Create, Modify, Delete, Enable, Disable, Unlock"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="1:ACP:0PIh0OdybgNGhuI+oSLyki3k4rjlCbdlEWOIoCiceTw="/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="testConnSQL" value="select * from USERDB.User_Security;"/>
+      <entry key="url" value="jdbc:sqlserver://americana-server.database.windows.net:1433;database=BI_UserDB"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDelta">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDirectPermission">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureGetObject">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedurePartition">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureSqlStmt">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureTestConn">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="user" value="BI_UserAccess"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" id="0a0805858528126181852e07099c11d0" name="31720"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form name="Form_PowerBI_Account_ProvisioningPolicy" objectType="account" type="Create">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="Form_PowerBI_Account_ProvisioningPolicy"/>
+        </Map>
+      </Attributes>
+      <Description>Create Provisioning Policy for Account in Power BI</Description>
+      <Section name="User">
+        <Field displayName="EMP_ID" name="EMP_ID" type="string">
+          <Script>
+            <Source>return identity.getName();</Source>
+          </Script>
+        </Field>
+      </Section>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema created="1703767484876" displayAttribute="EMAIL_ADDRESS" id="0a0805848ca61d25818cb074a9cc7b4f" identityAttribute="EMAIL_ADDRESS" instanceAttribute="" modified="1714983451431" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="EMP_ID" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="EMAIL_ADDRESS" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="USER_NAME" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="ACCESS_TYPE" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="MASTER_DELETE_FLAG" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="COMPANY_NO" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="REST_NUMBER" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="CHAIN_NUMBER" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="AREA_NUMBER" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="DELETE_FLAG" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="ENTRY_FLAG" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="PETTY_CASH_ENTRY" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="SALES_FLAG" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="PL_FLAG" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="Marketing_Flag" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="PAYROLL_FLAG" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="ARCHIVING_FLAG" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="USER_TITLE" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="USER_ID" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="COST_CENTER" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="USER_STATUS" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="SALES_GROUP" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="PL_GROUP" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="MARKETING_GROUP" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="STORE_INFO_S" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="STORE_INFO_L" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="STORE_INFO_M" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="STORE_INFO_LM" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="STORE_INFO_SM" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="STORE_INFO_SL" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="STORE_INFO_SLM" type="string">
+        <Description></Description>
+      </AttributeDefinition>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard created="1703754747434" id="0a0805848ca61d25818cafb24e2a77ec" modified="1714983451431"/>
+</Application>

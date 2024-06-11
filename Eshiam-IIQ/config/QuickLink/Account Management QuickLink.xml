@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE QuickLink PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<QuickLink action="workflow" category="Account Management" created="" id="" messageKey="Account Creation" modified="" name="Account Management QuickLink">
+  <Attributes>
+    <Map>
+      <entry key="requester">
+        <value>
+          <Script>
+            <Source> return currentUser.getName();
+            </Source>
+          </Script>
+        </value>
+      </entry>
+      <entry key="workflowName" value="Domain and Service Account Creation 08052024"/>
+    </Map>
+  </Attributes>
+  <Description>To Manage Service Accounts</Description>
+  <QuickLinkOptions allowSelf="true" created="" id="" modified="">
+    <DynamicScopeRef>
+      <Reference class="sailpoint.object.DynamicScope" id="" name="Everyone"/>
+    </DynamicScopeRef>
+  </QuickLinkOptions>
+</QuickLink>
