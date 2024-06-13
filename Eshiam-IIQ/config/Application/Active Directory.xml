@@ -13,7 +13,7 @@
             <Map>
               <entry key="IQServiceHost" value="aedxbsrvprdapp2"/>
               <entry key="IQServicePassword"/>
-              <entry key="IQServicePort" value="5050"/>
+              <entry key="IQServicePort" value="5051"/>
               <entry key="IQServiceUser"/>
               <entry key="useTLSForIQService">
                 <value>
